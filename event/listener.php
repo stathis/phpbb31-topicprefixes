@@ -3,7 +3,7 @@
 *
 * Extension - Topic Prefixes
 *
-* @copyright (c) 2015 PART3 <http://part3.org>
+* @copyright (c) 2016 PART3 <http://part3.org>
 * @license MIT License
 *
 */
@@ -99,12 +99,12 @@ class listener implements EventSubscriberInterface
 			{
 				return false;
 			}
-		} 
+		}
 		return true;
 	}
 
 	public function posting_modify_submission_errors($event)
-	{		
+	{
 		// Don't throw errors if not first post of the topic
 		if (!$this->is_first_post($event['topic_id'], $event['post_id'], $event['mode'])) {
 			return;
@@ -142,7 +142,8 @@ class listener implements EventSubscriberInterface
 		$data = $event['data'];
 		$sql_data = $event['sql_data'];
 
-		if ($event['post_mode'] == 'edit_first_post') {
+		// Are we creating a new topic or editting the first post?
+		if (in_array($event['post_mode'], array('edit_first_post', 'edit_topic', 'post')) {
 			$sql_data[TOPICS_TABLE]['sql']['topic_prefix'] = $data['topic_prefix'];
 		}
 

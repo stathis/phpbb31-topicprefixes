@@ -3,7 +3,7 @@
 *
 * Extension - Topic Prefixes
 *
-* @copyright (c) 2015 PART3 <http://part3.org>
+* @copyright (c) 2016 PART3 <http://part3.org>
 * @license MIT License
 *
 */
