@@ -143,7 +143,7 @@ class listener implements EventSubscriberInterface
 		$sql_data = $event['sql_data'];
 
 		// Are we creating a new topic or editting the first post?
-		if (in_array($event['post_mode'], array('edit_first_post', 'edit_topic', 'post')) {
+		if (in_array($event['post_mode'], array('edit_first_post', 'edit_topic', 'post'))) {
 			$sql_data[TOPICS_TABLE]['sql']['topic_prefix'] = $data['topic_prefix'];
 		}
 
