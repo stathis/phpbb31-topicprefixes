@@ -216,9 +216,14 @@ class listener implements EventSubscriberInterface
 	{
 		$block = array_merge($block, array(
 			'TOPIC_TITLE'	=> ((!empty($row['topic_prefix'])) ? '[' . $row['topic_prefix'] . '] ' : '') . $block['TOPIC_TITLE'],
-			'POST_SUBJECT'	=> ((!empty($row['topic_prefix'])) ? '[' . $row['topic_prefix'] . '] ' : '') . $block['POST_SUBJECT'],
 			// 'TOPIC_DESC'	=> $row['topic_desc'],
 		));
+		if (isset($block['POST_SUBJECT']))
+		{
+			$block = array_merge($block, array(
+				'POST_SUBJECT'	=> ((!empty($row['topic_prefix'])) ? '[' . $row['topic_prefix'] . '] ' : '') . $block['POST_SUBJECT'],
+			));
+		}
 
 		return $block;
 	}
