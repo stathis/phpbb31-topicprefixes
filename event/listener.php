@@ -215,7 +215,7 @@ class listener implements EventSubscriberInterface
 	private function display_topic_prefix($row, $block)
 	{
 		$block = array_merge($block, array(
-			'TOPIC_TITLE'	=> ((!empty($row['topic_prefix'])) ? '[' . $row['topic_prefix'] . '] ' : '') . $row['topic_title'],
+			'TOPIC_TITLE'	=> ((!empty($row['topic_prefix'])) ? '[' . $row['topic_prefix'] . '] ' : '') . $block['TOPIC_TITLE'],
 			// 'TOPIC_DESC'	=> $row['topic_desc'],
 		));
 
