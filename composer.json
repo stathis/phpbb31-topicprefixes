@@ -1,0 +1,26 @@
+{
+	"name": "part3/topicprefixes",
+	"type": "phpbb-extension",
+	"description": "An extension for phpBB 3.1.x that allows users to add a prefix to their topics.",
+	"homepage": "http://part3.org",
+	"version": "1.0.0",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Stathis Oureilidis",
+			"email": "stathis@stathis.ch",
+			"homepage": "http://github.com/stathis",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3",
+		"composer/installers": "~1.0"
+	},
+	"extra": {
+		"display-name": "Topic Prefixes",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.7"
+		}
+	}
+}

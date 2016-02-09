@@ -1,0 +1,15 @@
+<!-- IF S_NEW_MESSAGE -->
+<!-- IF HAS_PREFIXES -->
+<dl style="clear: left;">
+	<dt><label for="topic_desc">{L_TOPIC_PREFIX}{L_COLON}</label></dt>
+	<dd>
+		<select name="topic_prefix" id="topic_prefix">
+			<option value=""></option>
+			<!-- BEGIN prefixes -->
+			<option value="{prefixes.CUR}"<!-- IF TOPIC_PREFIX == prefixes.CUR --> selected<!-- ENDIF -->>{prefixes.CUR}</option>
+			<!-- END prefixes -->
+		</select>
+	</dd>
+</dl>
+<!-- ENDIF -->
+<!-- ENDIF -->

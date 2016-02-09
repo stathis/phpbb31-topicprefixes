@@ -1,0 +1,11 @@
+services:
+    part3.topicprefixes.listener:
+        class: part3\topicprefixes\event\listener
+        arguments:
+            - @auth
+            - @dbal.conn
+            - @request
+            - @template
+            - @user
+        tags:
+            - { name: event.listener }
