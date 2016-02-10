@@ -80,7 +80,7 @@ class listener implements EventSubscriberInterface
 
 	// Are we looking at the topic's first post?
 	private function is_first_post($topic_id, $post_id, $mode) {
-		if ($mode == 'reply') {
+		if ($mode == 'reply' || $mode == 'quote') {
 			return false;
 		}
 		if ($mode == 'edit')
