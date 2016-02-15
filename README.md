@@ -1,5 +1,6 @@
 topicprefixes
 =========================
+[![Build Status](https://travis-ci.org/stathis/phpbb31-topicprefixes.svg?branch=master)](https://travis-ci.org/stathis/phpbb31-topicprefixes)
 
 An extension for phpBB 3.1.x that allows users to add predefined prefixes to topics.
 
