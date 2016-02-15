@@ -79,8 +79,10 @@ class listener implements EventSubscriberInterface
 	}
 
 	// Are we looking at the topic's first post?
-	private function is_first_post($topic_id, $post_id, $mode) {
-		if ($mode == 'reply' || $mode == 'quote') {
+	private function is_first_post($topic_id, $post_id, $mode)
+	{
+		if ($mode == 'reply' || $mode == 'quote')
+		{
 			return false;
 		}
 		if ($mode == 'edit')
@@ -106,12 +108,14 @@ class listener implements EventSubscriberInterface
 	public function posting_modify_submission_errors($event)
 	{
 		// Don't throw errors if not first post of the topic
-		if (!$this->is_first_post($event['topic_id'], $event['post_id'], $event['mode'])) {
+		if (!$this->is_first_post($event['topic_id'], $event['post_id'], $event['mode']))
+		{
 			return;
 		}
 
 		// Check if prefix is required and given.
-		if ($event['post_data']['forum_topic_prefix_required'] && empty($this->request->variable('topic_prefix', '', true))) {
+		if ($event['post_data']['forum_topic_prefix_required'] && empty($this->request->variable('topic_prefix', '', true)))
+		{
 			$event['error'] = array_merge($event['error'], array(
 				$this->user->lang('PREFIX_REQUIRED'),
 			));
@@ -119,7 +123,8 @@ class listener implements EventSubscriberInterface
 		}
 
 		// Has the user given a valid prefix?
-		if (!in_array($this->request->variable('topic_prefix', '', true), explode(';', $event['post_data']['forum_topic_prefixes']))) {
+		if (!in_array($this->request->variable('topic_prefix', '', true), explode(';', $event['post_data']['forum_topic_prefixes'])))
+		{
 			$event['error'] = array_merge($event['error'], array(
 				$this->user->lang('PREFIX_INVALID'),
 			));
@@ -130,7 +135,8 @@ class listener implements EventSubscriberInterface
 	{
 		$data = $event['data'];
 
-		if ($this->is_first_post($event['topic_id'], $event['post_id'], $event['mode'])) {
+		if ($this->is_first_post($event['topic_id'], $event['post_id'], $event['mode']))
+		{
 			$data['topic_prefix'] = $this->request->variable('topic_prefix', '', true);
 		}
 
@@ -143,7 +149,8 @@ class listener implements EventSubscriberInterface
 		$sql_data = $event['sql_data'];
 
 		// Are we creating a new topic or editting the first post?
-		if (in_array($event['post_mode'], array('edit_first_post', 'edit_topic', 'post'))) {
+		if (in_array($event['post_mode'], array('edit_first_post', 'edit_topic', 'post')))
+		{
 			$sql_data[TOPICS_TABLE]['sql']['topic_prefix'] = $data['topic_prefix'];
 		}
 
@@ -153,7 +160,8 @@ class listener implements EventSubscriberInterface
 	public function posting_modify_template_vars($event)
 	{
 		// No need to load extra stuff if not first post
-		if (!$this->is_first_post($event['topic_id'], $event['post_id'], $event['mode'])) {
+		if (!$this->is_first_post($event['topic_id'], $event['post_id'], $event['mode']))
+		{
 			return;
 		}
 
@@ -162,7 +170,8 @@ class listener implements EventSubscriberInterface
 
 		$page_data['HAS_PREFIXES'] = !empty($event['post_data']['forum_topic_prefixes']);
 		$page_data['TOPIC_PREFIX'] = (!empty($post_data['topic_prefix'])) ? $post_data['topic_prefix'] : '';
-		foreach (explode(';', $event['post_data']['forum_topic_prefixes']) as $prefix) {
+		foreach (explode(';', $event['post_data']['forum_topic_prefixes']) as $prefix)
+		{
 			$this->template->assign_block_vars('prefixes', array(
 				'CUR' => $prefix,
 			));
