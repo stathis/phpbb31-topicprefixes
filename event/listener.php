@@ -68,13 +68,14 @@ class listener implements EventSubscriberInterface
 
 			'core.viewforum_modify_topicrow'				=> 'modify_topicrow_tpl_ary',
 			'core.viewtopic_assign_template_vars_before'	=> 'viewtopic_assign_template_vars_before',
-
 			'core.viewtopic_modify_page_title'				=> 'viewtopic_modify_page_title',
-
 			'core.viewtopic_modify_post_row'				=> 'viewtopic_modify_post_row',
 
 			'core.acp_manage_forums_display_form'			=> 'acp_manage_forums_display_form',
 			'core.acp_manage_forums_update_data_before'		=> 'acp_manage_forums_update_data_before',
+
+			'core.mcp_view_forum_modify_topicrow'			=> 'modify_topicrow_tpl_ary',
+			'core.mcp_topic_review_modify_row'				=> 'mcp_topic_review_modify_row',
 		);
 	}
 
@@ -204,6 +205,18 @@ class listener implements EventSubscriberInterface
 			$event['post_row'] = array_merge($event['post_row'], array(
 				'POST_SUBJECT'	=> ((!empty($event['topic_data']['topic_prefix'])) ? '[' . $event['topic_data']['topic_prefix'] . '] ' : '')
 								 . $event['post_row']['POST_SUBJECT'],
+			));
+		}
+	}
+
+	// Post prefixes in MCP topic view
+	public function mcp_topic_review_modify_row($event)
+	{
+		if (strlen($event['topic_info']['topic_prefix']) > 0)
+		{
+			$event['post_row'] = array_merge($event['post_row'], array(
+					'POST_SUBJECT'	=> ((!empty($event['topic_info']['topic_prefix'])) ? '[' . $event['topic_info']['topic_prefix'] . '] ' : '')
+									 . $event['post_row']['POST_SUBJECT'],
 			));
 		}
 	}
