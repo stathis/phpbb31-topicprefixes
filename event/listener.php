@@ -123,8 +123,14 @@ class listener implements EventSubscriberInterface
 			return;
 		}
 
+		// Build valid prefixes array
+		$valid_prefixes = explode(';', $event['post_data']['forum_topic_prefixes']);
+		if (!$event['post_data']['forum_topic_prefix_required']) {
+			$valid_prefixes = array_merge($valid_prefixes, array(''));
+		}
+
 		// Has the user given a valid prefix?
-		if (!in_array($this->request->variable('topic_prefix', '', true), explode(';', $event['post_data']['forum_topic_prefixes'])))
+		if (!in_array($this->request->variable('topic_prefix', '', true), $valid_prefixes))
 		{
 			$event['error'] = array_merge($event['error'], array(
 				$this->user->lang('PREFIX_INVALID'),
