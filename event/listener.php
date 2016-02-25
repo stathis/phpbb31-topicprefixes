@@ -114,8 +114,11 @@ class listener implements EventSubscriberInterface
 			return;
 		}
 
+		// Topic Prefix given from POST variable
+		$topic_prefix = $this->request->variable('topic_prefix', '', true);
+
 		// Check if prefix is required and given.
-		if ($event['post_data']['forum_topic_prefix_required'] && empty($this->request->variable('topic_prefix', '', true)))
+		if ($event['post_data']['forum_topic_prefix_required'] && empty($topic_prefix))
 		{
 			$event['error'] = array_merge($event['error'], array(
 				$this->user->lang('PREFIX_REQUIRED'),
@@ -125,12 +128,13 @@ class listener implements EventSubscriberInterface
 
 		// Build valid prefixes array
 		$valid_prefixes = explode(';', $event['post_data']['forum_topic_prefixes']);
-		if (!$event['post_data']['forum_topic_prefix_required']) {
+		if (!$event['post_data']['forum_topic_prefix_required'])
+		{
 			$valid_prefixes = array_merge($valid_prefixes, array(''));
 		}
 
 		// Has the user given a valid prefix?
-		if (!in_array($this->request->variable('topic_prefix', '', true), $valid_prefixes))
+		if (!in_array($topic_prefix, $valid_prefixes))
 		{
 			$event['error'] = array_merge($event['error'], array(
 				$this->user->lang('PREFIX_INVALID'),
