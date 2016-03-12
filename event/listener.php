@@ -68,7 +68,6 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-
 			'core.posting_modify_submission_errors'		    => 'posting_modify_submission_errors',
 			'core.posting_modify_submit_post_before'	    => 'posting_modify_submit_post_before',
 			'core.posting_modify_template_vars'			    => 'posting_modify_template_vars',
@@ -85,7 +84,6 @@ class listener implements EventSubscriberInterface
 			'core.viewtopic_assign_template_vars_before'	=> 'viewtopic_assign_template_vars_before',
 			'core.viewtopic_modify_page_title'				=> 'viewtopic_modify_page_title',
 			'core.viewtopic_modify_post_row'				=> 'viewtopic_modify_post_row',
-
 
 			'core.acp_manage_forums_display_form'			=> 'acp_manage_forums_display_form',
 			'core.acp_manage_forums_update_data_before'		=> 'acp_manage_forums_update_data_before',
