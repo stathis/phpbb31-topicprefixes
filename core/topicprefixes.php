@@ -1,10 +1,13 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Nix
- * Date: 12.03.16
- * Time: 17:29
+ *
+ * Extension - Topic Prefixes
+ *
+ * @copyright (c) 2016 PART3 <http://part3.org>
+ * @license MIT License
+ *
  */
+
 namespace part3\topicprefixes\core;
 
 class topicprefixes
@@ -45,9 +48,6 @@ class topicprefixes
 		$this->template = $template;
 		$this->user = $user;
 	}
-
-
-
 
 	/**
 	 * handler for Event
@@ -284,11 +284,4 @@ class topicprefixes
 		}
 		return true;
 	}
-
-
-
-
-
-
-
 }

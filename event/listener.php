@@ -51,10 +51,10 @@ class listener implements EventSubscriberInterface
 	public function __construct(
 		\part3\topicprefixes\core\topicprefixes $topicprefixes,
 		\phpbb\auth\auth $auth,
-        \phpbb\db\driver\driver_interface $db,
-        \phpbb\request\request $request,
-        \phpbb\template\template $template,
-        \phpbb\user $user)
+		\phpbb\db\driver\driver_interface $db,
+		\phpbb\request\request $request,
+		\phpbb\template\template $template,
+		\phpbb\user $user)
 	{
 		$this->auth = $auth;
 		$this->auth = $auth;
@@ -173,7 +173,6 @@ class listener implements EventSubscriberInterface
 	{
 		$this->topicprefixes->viewtopic_modify_page_title($event);
 	}
-
 
 	// ACP CONFIG
 	public function acp_manage_forums_display_form($event)
