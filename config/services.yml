@@ -1,11 +1,20 @@
 services:
+    part3.topicprefixes.functions:
+        class: part3\topicprefixes\core\topicprefixes
+        arguments:
+            - '@auth'
+            - '@dbal.conn'
+            - '@request'
+            - '@template'
+            - '@user'
     part3.topicprefixes.listener:
         class: part3\topicprefixes\event\listener
         arguments:
-            - @auth
-            - @dbal.conn
-            - @request
-            - @template
-            - @user
+            - '@part3.topicprefixes.functions'
+            - '@auth'
+            - '@dbal.conn'
+            - '@request'
+            - '@template'
+            - '@user'
         tags:
             - { name: event.listener }
