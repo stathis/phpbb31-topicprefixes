@@ -41,6 +41,7 @@ $lang = array_merge($lang, array(
 	'TOPIC_DESC'	=> 'Descrição do tópico',
 	'TOPIC_PREFIX'	=> 'Prefixo do tópico',
 	'PREFIX_REQUIRED' => 'Prefixo é necessário',
+	'PREFIX_ADD' => 'Selecione o prefixo do tópico',
 	'PREFIX_INVALID' => 'HAX?',
 
 	'ACP_PREFIXES' => 'Prefixos',
