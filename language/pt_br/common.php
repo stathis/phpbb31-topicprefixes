@@ -5,7 +5,7 @@
 *
 * @copyright (c) 2016 PART3 <http://part3.org>
 * @license MIT License
-* Brazilian Portuguese translation by eunaumtenhoid (c) 2017 [ver 2.0.0] (https://github.com/phpBBTraducoes)
+* Brazilian Portuguese translation by eunaumtenhoid (c) 2017 [ver 1.0.0] (https://github.com/phpBBTraducoes)
 */
 
 /**
